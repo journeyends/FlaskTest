@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="vue-app">
+        <table>
+            <tr v-for="detail in attendance_list">
+                <td>{{detail.ID}}</td>
+                <td><input type="text" v-model="detail.entry_dt" v-on:change="changeEntryDt(detail)" /></td>
+                <td><input type="text" v-model="detail.ADD_DT" v-on:change="changeAddDt(detail)" /></td>
+                <td>{{detail.RECNO}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+<script src="/static/jquery/jquery-1.11.1.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="/static/vue/vue-resource.min.js" ></script>
+<script>
+    let app = new Vue({
+        el: '#vue-app',
+        data: {
+            attendance_list: []
+        },
+        created: function() {
+            this.get_list()
+        },
+        methods:{
+            get_list(){
+                this.$http.get("http://"+window.location.host+"/api/log/attendance/list",
+                {emulateJSON: true})
+                .then(
+                    function (response) {
+                        this.$set(this, 'attendance_list', response.data == undefined ? {} : eval(response.data));
+                        console.log(response)
+                    },
+                    function (response) {
+                        console.log("fail")
+                    }
+                );
+            },
+            changeEntryDt(detail){
+                let param = {
+                    'id':detail.ID,
+                    'entry_dt':detail.entry_dt
+                };
+                this.changeData(param);
+            },
+            changeAddDt(detail){
+                let param = {
+                    'id':detail.ID,
+                    'add_dt':detail.ADD_DT
+                };
+                this.changeData(param);
+            },
+            changeData(param){
+                this.$http.post("http://"+window.location.host+"/api/log/attendance/update",
+                    param,
+                {emulateJSON: true})
+                .then(
+                    function (response) {
+                        console.log(response)
+                    },
+                    function (response) {
+                        console.log("fail")
+                    }
+                );
+            }
+        }
+    });
+</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lotus_register</title>
+</head>
+<body>
+    <div id="vue-app">
+        <input type="text" v-model="account" />
+        <input type="password" v-model="password" />
+        <input type="password" v-model="password_confirm" />
+        <input type="button" value="提交" v-on:click="doRegister" />
+    </div>
+</body>
+</html>
+
+<script src="/static/jquery/jquery-1.11.1.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="/static/vue/vue-resource.min.js" ></script>
+<script>
+    let app = new Vue({
+        el: '#vue-app',
+        data: {
+            account: null,
+            password: null,
+            password_confirm: null
+        },
+        created: function() {
+
+        },
+        methods:{
+            doRegister(){
+                this.$http.post("http://"+window.location.host+"/api/lotus/register",
+                    {
+                        'account': this.account,
+                        'password': this.password,
+                        'password_confirm': this.password_confirm
+                    }
+                    ,
+                    {emulateJSON: true})
+                    .then(
+                        function (response) {
+                            alert('success')
+                        },
+                        function (response) {
+                            alert('fail')
+                        }
+                    );
+            }
+        }
+    });
+</script>

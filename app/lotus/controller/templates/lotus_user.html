@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lotus_user</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/fileinput/css/fileinput.css">
+</head>
+<body>
+    <div id="vue-app">
+        <input type="text" v-model="user.nickname" />
+        <input type="number" v-model="user.sex" />
+        <input type="number" v-model="user.age" />
+        <img v-bind:src="head_photo_url">
+        <input name="headphoto" id="headPhoto" type="file" data-overwrite-initial="false"/>
+        <button type="button" id="btnSave" v-on:click="saveUserData()">保存</button>
+    </div>
+</body>
+</html>
+
+<script src="/static/jquery/jquery-1.11.1.min.js" ></script>
+<script src="/static/jquery-extension.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="/static/vue/vue-resource.min.js" ></script>
+<script src="/static/fileinput/js/fileinput.js"></script>
+<script src="/static/fileinput/js/fileinput_locale_zh.js"></script>
+<script src="/static/bootstrap/js/bootstrap.js"></script>
+<script>
+    let app = new Vue({
+        el: '#vue-app',
+        data: {
+            user:{},
+            head_photo_url:"",
+            head_photo_id:0
+        },
+        created: function() {
+            this.getUserData()
+        },
+        methods:{
+            getUserData(){
+                let user_id = $.getUrlParam("id");
+
+                if (user_id == undefined || user_id == '' || user_id == null) {
+                    return
+                }
+
+                this.$http.get("http://"+window.location.host+"/api/lotus/user/"
+                + user_id,
+                {emulateJSON: true})
+                .then(
+                    function (response) {
+                        this.$set(this, 'head_photo_url', response.data == undefined ? {} : JSON.parse(response.data).head_photo_url);
+                        this.$set(this, 'user', response.data == undefined ? {} : JSON.parse(JSON.parse(response.data).user));
+                    }
+                );
+            },
+            saveUserData(){
+                this.$http.post("http://"+window.location.host+"/api/lotus/user/save",
+                {
+                    'user': this.user
+                },
+                {emulateJSON: true})
+                .then(
+                    function (response) {
+                        alert('success')
+                    },
+                    function (response) {
+                        alert('fail')
+                    }
+                );
+            },
+            getHeadPhotoUrl: function () {
+                this.$http.get("http://"+window.location.host+"/api/sys/file/path/"
+                    + this.head_photo_id,
+                {emulateJSON: true})
+                .then(
+                    function (response) {
+                        this.head_photo_url = response.data;
+                    },
+                    function (response) {
+                        console.log(response)
+                    }
+                );
+            }
+        }
+    });
+
+    $('#headPhoto').fileinput({
+        uploadUrl: '/api/sys/upload',
+        //allowedFileExtensions : ['jpg', 'png','gif'],
+        overwriteInitial: false,
+        maxFileSize: 1000,
+        maxFilesNum: 10,
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        },
+        uploadExtraData: function(previewId, index) {
+            let data = {
+                keyId: 0,
+                keyName: "lotus_user",
+                expand: ""
+            };
+            return data;
+        }
+    }).on("fileuploaded", function (event, data, previewId, index) {
+        if(data.response.status == 1) {
+            app.head_photo_id = data.response.attach_list[0].id;
+            app.head_photo_path = data.response.attach_list[0].attach_path;
+            app.getHeadPhotoUrl();
+        }
+    });
+</script>

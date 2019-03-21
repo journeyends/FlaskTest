@@ -1,0 +1,83 @@
+[ERROR]   [2019-03-21 Thu, PM 14:26:25,865] log_helper.py [line:405]: division by zero
+[INFO]    [2019-03-21 Thu, PM 14:26:25,867] _internal.py [line:88]: 127.0.0.1 - - [21/Mar/2019 14:26:25] "GET /lotus/user HTTP/1.1" 500 -
+[ERROR]   [2019-03-21 Thu, PM 14:29:13,649] app.py [line:1761]: Exception on /lotus/user [GET]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "F:\PycharmProjects\FlaskTest\app\lotus\controller\user_controller.py", line 7, in user
+    a=1/0
+ZeroDivisionError: division by zero
+[ERROR]   [2019-03-21 Thu, PM 14:29:39,160] log_helper.py [line:405]: division by zero
+[INFO]    [2019-03-21 Thu, PM 14:29:39,165] _internal.py [line:88]: 127.0.0.1 - - [21/Mar/2019 14:29:39] "GET /lotus/user HTTP/1.1" 500 -
+[ERROR]   [2019-03-21 Thu, PM 14:30:21,245] app.py [line:1761]: Exception on /lotus/user [GET]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "F:\PycharmProjects\FlaskTest\app\lotus\controller\user_controller.py", line 7, in user
+    a=1/0
+ZeroDivisionError: division by zero
+[ERROR]   [2019-03-21 Thu, PM 14:31:42,674] log_helper.py [line:405]: division by zero
+[INFO]    [2019-03-21 Thu, PM 14:31:42,678] _internal.py [line:88]: 127.0.0.1 - - [21/Mar/2019 14:31:42] "GET /lotus/user HTTP/1.1" 500 -
+[ERROR]   [2019-03-21 Thu, PM 14:41:37,748] log_helper.py [line:405]: division by zero
+[ERROR]   [2019-03-21 Thu, PM 14:42:14,587] app.py [line:1761]: Exception on /lotus/user [GET]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "F:\PycharmProjects\FlaskTest\app\lotus\controller\user_controller.py", line 7, in user
+    a=1/0
+ZeroDivisionError: division by zero
+[ERROR]   [2019-03-21 Thu, PM 14:42:17,652] log_helper.py [line:405]: division by zero
+[INFO]    [2019-03-21 Thu, PM 14:42:17,653] _internal.py [line:88]: 127.0.0.1 - - [21/Mar/2019 14:42:17] "GET /lotus/user HTTP/1.1" 500 -
+[ERROR]   [2019-03-21 Thu, PM 14:43:00,169] app.py [line:1761]: Exception on /lotus/user [GET]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "F:\PycharmProjects\FlaskTest\app\lotus\controller\user_controller.py", line 7, in user
+    a=1/0
+ZeroDivisionError: division by zero
+[ERROR]   [2019-03-21 Thu, PM 14:43:05,339] log_helper.py [line:405]: division by zero
+[INFO]    [2019-03-21 Thu, PM 14:43:05,338] _internal.py [line:88]: 127.0.0.1 - - [21/Mar/2019 14:43:05] "GET /lotus/user HTTP/1.1" 500 -
+[INFO]    [2019-03-21 Thu, PM 14:44:09,768] _internal.py [line:88]: 127.0.0.1 - - [21/Mar/2019 14:44:09] "GET /lotus/user HTTP/1.1" 500 -
+[ERROR]   [2019-03-21 Thu, PM 14:44:19,297] log_helper.py [line:407]: division by zero
+[ERROR]   [2019-03-21 Thu, PM 14:45:23,771] log_helper.py [line:405]: division by zero
+[ERROR]   [2019-03-21 Thu, PM 17:29:24,163] log_helper.py [line:405]: division by zero
