@@ -6,6 +6,7 @@ engine = create_engine("mysql+pymysql://root:123456@127.0.0.1:3306/gmerptest",
                        encoding='utf-8', echo=True)
 session_class = sessionmaker(bind=engine)
 
+
 @contextmanager
 def get_session():
     try:

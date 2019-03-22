@@ -394,15 +394,20 @@ class Logger():
 
 class log(object):
     @classmethod
-    def logInit(self):
+    def logInit(cls):
         logInstance = get_logger(colorful=True)
         logInstance.set_logger(propagate=True)
         return logInstance
 
     @classmethod
-    def logError(self, exception, exc_info=False):
-        logInstance = self.logInit()
+    def logError(cls, exception, exc_info=False):
+        logInstance = cls.logInit()
         logInstance.error(exception, exc_info=exc_info)
+
+    @classmethod
+    def logErrorAsyn(cls, exception, exc_info=False):
+        t = threading.Thread(target=cls.logError, args=(exception, exc_info))
+        t.start()
 
 
 if __name__ == '__main__':

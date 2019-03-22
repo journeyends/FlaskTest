@@ -6,7 +6,6 @@ from app.sys.api import app_sys_api
 from app.log.controller import app_log
 from app.log.api import app_log_api
 from common.log_helper import log
-import threading
 from common.redis_helper import get_redis_link
 import jwt
 import time
@@ -100,8 +99,7 @@ def handle_404_error(e):
 @app.errorhandler(500)
 def handle_500_error(e):
     s = str(e)
-    t = threading.Thread(target=log.logError, args=(s,))
-    t.start()
+    log.logErrorAsyn(s)
     return s, 500
 
 
